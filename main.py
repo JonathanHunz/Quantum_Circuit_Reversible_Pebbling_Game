@@ -8,9 +8,7 @@ import matplotlib.pyplot as plt
 
 def read_dimacs(path):
     lines = open(path).readlines()
-
-    n = 0
-    m = 0
+    
     E = set()
     V = set()
     O = set()
@@ -22,10 +20,8 @@ def read_dimacs(path):
         if values[0] == 'c':
             continue
         elif values[0] == 'p':
-            if not values[1] == "edge" or not len(values) == 4:
-                raise Exception("Invalid dimacs graph file.")
-            n = int(values[2])
-            m = int(values[3])
+            if not values[1] == "pebbling\n" or not len(values) == 2:
+                raise Exception("Invalid pebbling graph file.")
         elif values[0] == 'e':
             if not len(values) == 3:
                 raise Exception("Invalid dimacs graph file.")
