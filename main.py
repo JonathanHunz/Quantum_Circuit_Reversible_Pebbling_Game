@@ -195,7 +195,7 @@ def main(path, P, K):
                 nodes = []
                 for v in V:
                     nodes.append((v + 1) if node_at_time[v][t] in model else -(v + 1))
-                print(nodes)
+                print("t = {}: {}".format(t, nodes))
                 circuit_description.append(nodes)
 
             draw_circuit(V, E, I, O, K, P, circuit_description)
@@ -209,6 +209,6 @@ if __name__ == "__main__":
     parser.add_argument("P", type=int)
     parser.add_argument("K", type=int)
     args = parser.parse_args()
-    main(args.path, args.P, args.K)
+    main(args.path, args.P, args.K + 1)
 
 
